@@ -1,0 +1,56 @@
+{% extends 'shared/layout.html' %}
+
+{% load staticfiles %}
+
+{% block content %}
+
+    {% if nome %}
+    <h1>Bem-Vindx {{nome}}</h1>
+    {% else %}
+    <h1>Bem-Vindx ao PETISK</h1>
+    {% endif %}
+    
+    <h2><strong>Cadastre-se para adoção</strong></h2>
+
+    <form action="/" method="post">
+        {% csrf_token %}
+        <label for="nome">Nome:</label>
+        <input type="text" name="nome" required>
+
+        <label for="sobrenome">Sobrenome:</label>
+        <input type="text" name="sobrenome" required>
+
+        <label for="date">Data de Nascimento:</label>
+        <input type="date" name="data_nascimento" required>
+
+        <label for="email">E-mail:</label>
+        <input type="email" name="email" required>
+
+        <label for="str_cep">CEP:</label>
+        <input type="text" maxlength="10" name="str_cep">
+
+        <label for="str_numero">Número Res.:</label>
+        <input type="text" name="str_numero">
+
+        <label for="complemento">Complemento:</label>
+        <input type="text" name="complemento">
+
+        <select name="genero" required>
+            <option value="O">Outro</option>
+            <option value="F">Feminino</option>
+            <option value="M">Masculino</option>
+        </select>
+
+        <label for="telefone">Telefone:</label>
+        <input type="text" name="telefone">
+
+        <label for="celular">Celular:</label>
+        <input type="text" name="celular" required>
+
+        <label for="motivo">Motivo:</label>
+        <textarea name="motivo"cols="30" rows="10" required></textarea>
+
+        <input type="submit" value="Cadastrar">
+    </form>
+
+{% endblock %}
